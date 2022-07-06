@@ -1,0 +1,26 @@
+.great {
+    font-size: 150px;
+    font-weight: bold;
+    color: greenyellow;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+    background-color: black;
+}
+
+.answers-container {
+    display: grid;
+    grid-template-columns: 500px 500px;
+    grid-template-rows: auto;
+    justify-content: center;
+}
+
+.choice {
+    font-size:  70px;
+    font-weight: bold;
+    color: green;
+    justify-self: stretch;
+}
