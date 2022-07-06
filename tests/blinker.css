@@ -19,8 +19,15 @@ body {
 }
 
 .choice {
-    font-size:  70px;
+    font-size: 70px;
     font-weight: bold;
     color: green;
     justify-self: stretch;
+}
+
+h4 {
+    color: red;
+    font-size: 170px;
+    text-align: center;
+    justify-content: center;
 }
