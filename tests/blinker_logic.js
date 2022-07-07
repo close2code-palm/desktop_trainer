@@ -31,7 +31,7 @@ let blinking_int = function(elements, words_req_pool){
 //I highly recommend to optimaze it 
 //considering monitor frequency
 //if you really know how rendering works ^^ 
-let frequency_per_minute = 500
+let frequency_per_minute = 300
 let show_tick_time = 60000 / frequency_per_minute
 let time_to_blink_msecs = 4000
 
@@ -50,6 +50,7 @@ const fill_answers = function() {
     }
     let check_pool_el = [...bl_el].filter(el => el.innerText.length != "")
     check_pool = [check_pool_el[0].innerText]
+    remove_blinkers()
     while (check_pool.length < fields.length) {
         new_text_el = random_word(data)
         if (!check_pool.includes(new_text_el)) {
@@ -57,20 +58,33 @@ const fill_answers = function() {
         }}
     function shuffle(array) {
         array.sort(() => Math.random() - 0.5);
-        }
+    }
     shuffle(check_pool);
     [...fields].forEach(f => {f.innerHTML = check_pool.pop()})
 }
 const hide_answers = () => {
     [...fields].forEach(f => f.style.display = 'none')
 }
+const remove_blinkers = () => {
+    blincontainer = document.getElementsByClassName('blink-container')[0];
+    [...bl_el].forEach(el => el.remove)
+    blincontainer.remove()
+}
+const remove_answers = () => {
+    [...fields].forEach(f => f.remove())
+    ancontainer = document.getElementsByClassName('answers-container')[0]
+    ancontainer.remove()
+}
+
 const check_last = function(event) {
     hide_answers()
     text_carrier = [...bl_el].filter(el => el.innerText.length != "")
     result = document.createElement('h4')
     if (text_carrier.textContent==event.target.textContent){
+        remove_answers()
         result.innerText = 'Верно!'
     } else {
+        remove_answers()
         result.innerText = "Неверно..."
     }
     blink_area = document.getElementsByTagName('h2')[0]
