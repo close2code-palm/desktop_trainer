@@ -31,7 +31,7 @@ let blinking_int = function(elements, words_req_pool){
 //I highly recommend to optimaze it 
 //considering monitor frequency
 //if you really know how rendering works ^^ 
-let frequency_per_minute = 300
+let frequency_per_minute = 100
 let show_tick_time = 60000 / frequency_per_minute
 let time_to_blink_msecs = 4000
 
@@ -43,6 +43,19 @@ let bl_el = document.getElementsByClassName('blink-area')
 let blink = setInterval(blinking_int, show_tick_time, bl_el,data)
 
 fields = document.getElementsByClassName('choice')
+
+
+// Maybe for later use with global loop
+const create_answer_areas = () => {
+    answers_container = document.createElement('div.answers-container')
+    body = document.getElementsByTagName('body')[0]
+    body.appendChild(answers_container)
+    for (let i = 0; i < 8; ++i) {
+        field = document.createElement('div.choice')
+        answers_container.appendChild(field)
+    }
+}
+
 const fill_answers = function() {
     clearInterval(blink)
     for (el of bl_el){
@@ -50,6 +63,7 @@ const fill_answers = function() {
     }
     let check_pool_el = [...bl_el].filter(el => el.innerText.length != "")
     check_pool = [check_pool_el[0].innerText]
+    this.answer = [...bl_el].filter(el => el.innerText.length != "")[0].innerText
     remove_blinkers()
     while (check_pool.length < fields.length) {
         new_text_el = random_word(data)
@@ -60,7 +74,10 @@ const fill_answers = function() {
         array.sort(() => Math.random() - 0.5);
     }
     shuffle(check_pool);
-    [...fields].forEach(f => {f.innerHTML = check_pool.pop()})
+    [...fields].forEach(f => {
+        f.innerHTML = check_pool.pop()
+        f.style.visibility = 'visible'
+    })
 }
 const hide_answers = () => {
     [...fields].forEach(f => f.style.display = 'none')
@@ -78,9 +95,8 @@ const remove_answers = () => {
 
 const check_last = function(event) {
     hide_answers()
-    text_carrier = [...bl_el].filter(el => el.innerText.length != "")
     result = document.createElement('h4')
-    if (text_carrier.textContent==event.target.textContent){
+    if (globalThis.answer==event.target.textContent){
         remove_answers()
         result.innerText = 'Верно!'
     } else {
