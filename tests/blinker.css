@@ -1,10 +1,16 @@
 .blink-area {
-    font-size: 12em;
+    font-size: 8em;
     font-weight: bold;
     color: greenyellow;
-    display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
+}
+
+.blink-container {
+    display: grid;
+    grid-template-columns: 50em 50em;
+    grid-template-rows: 20em 20em;
 }
 
 body {
@@ -13,7 +19,7 @@ body {
 
 .answers-container {
     display: grid;
-    grid-template-columns: 32em 32em;
+    grid-template-columns: 42em 42em;
     grid-template-rows: auto;
     justify-content: center;
     margin-top: 4em;
