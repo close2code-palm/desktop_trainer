@@ -1,5 +1,5 @@
 .great {
-    font-size: 150px;
+    font-size: 12em;
     font-weight: bold;
     color: greenyellow;
     display: flex;
@@ -13,13 +13,13 @@ body {
 
 .answers-container {
     display: grid;
-    grid-template-columns: 500px 500px;
+    grid-template-columns: 32em 32em;
     grid-template-rows: auto;
     justify-content: center;
 }
 
 .choice {
-    font-size: 70px;
+    font-size: 6em;
     font-weight: bold;
     color: green;
     justify-self: stretch;
@@ -27,7 +27,7 @@ body {
 
 h4 {
     color: red;
-    font-size: 170px;
+    font-size: 7em;
     text-align: center;
     justify-content: center;
 }
