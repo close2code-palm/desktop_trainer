@@ -45,18 +45,34 @@ function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
 }
 
-let bl_el = document.getElementsByClassName('blink-area')
 
-fields = document.getElementsByClassName('choice')
 
-// Maybe for later use with global loop
 const create_answer_areas = () => {
-    answers_container = document.createElement('div.answers-container')
+    answers_container = document.createElement('div')
+    answers_container.className = 'answers-container'
     body = document.getElementsByTagName('body')[0]
     body.appendChild(answers_container)
     for (let i = 0; i < 8; ++i) {
-        field = document.createElement('div.choice')
+        field = document.createElement('div')
+        field.className = 'choice'
+        field.style.visibility = 'hidden'
         answers_container.appendChild(field)
+    }
+}
+
+const create_blink_areas = () => {
+    blink_container = document.createElement('div')
+    blink_container.className = 'blink-container'
+    body = document.getElementsByTagName('body')[0]
+    body.appendChild(blink_container)
+    const blinker = document.createElement('div');
+    blinker.className = 'blink-area'
+    blinker.innerText = 'Загрузка...'
+    blink_container.appendChild(blinker)
+    for (let i = 0; i < 3; ++i) {
+        const blinker = document.createElement('div');
+        blinker.className = 'blink-area'
+        blink_container.appendChild(blinker)
     }
 }
 
@@ -104,25 +120,33 @@ const check_last = function(event) {
     if (globalThis.answer==event.target.textContent){
         remove_answers()
         result.innerText = 'Верно!'
+        this.frequency_per_minute += 50
     } else {
         remove_answers()
         result.innerText = "Неверно..."
+        this.frequency_per_minute -= 50
     }
     blink_area = document.getElementsByTagName('h2')[0]
     document.body.insertBefore(result, blink_area)
 }
 
-for (const el of fields){
-    el.onclick = check_last
-}
 
 
 let stage = function() {
-    
+    create_blink_areas()
+
+    bl_el = document.getElementsByClassName('blink-area')
     let blink = setInterval(blinking_int, show_tick_time, bl_el,data)
     
     let stage_decide = fill_answers.bind(blink)
+    create_answer_areas()
 
+    fields = document.getElementsByClassName('choice')
+
+    for (const el of fields){
+        el.onclick = check_last
+    }
+    
     setTimeout(stage_decide, time_to_blink_msecs)
 }
 
