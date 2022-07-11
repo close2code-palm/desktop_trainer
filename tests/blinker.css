@@ -13,6 +13,7 @@
     grid-template-columns: 50em 50em;
     grid-template-rows: 23em 23em;
     justify-content: center;
+    margin-top: 7em;
 }
 
 body {
@@ -38,7 +39,41 @@ body {
 
 h4 {
     color: red;
-    font-size: 17em;
+    font-size: 7em;
     text-align: center;
     justify-content: center;
+    margin: 0.3em;
 }
+
+button {
+    height: 2em;
+    font-size: 3em;
+    width: 13em;
+    color: rebeccapurple;
+    justify-content: center;
+    background-color: aqua;
+}
+
+p {
+    color: royalblue;
+    justify-content: center;
+    font-size: 7em;
+    margin: 0.3em;
+}
+
+label, input, .input-button {
+    font-size: 6em;
+    font: bold;
+    color: green;
+    height: 3em;
+    width: 20em;
+    display: block;
+    justify-content: center;
+}
+
+.b-l-cont {
+    text-align: center;
+    text-justify: center;
+}
+
+
