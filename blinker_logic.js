@@ -204,8 +204,7 @@ const accept_input = function() {
         alert("Натуральным числом!")
     } else {
         window.localStorage.setItem('user_freq', input_val)
-        this.frequency_per_minute = Number(input_val)
-        // clear_input()
+        globalThis.frequency_per_minute = Number(input_val)
         stage()
     }
 }
@@ -219,6 +218,3 @@ if (localStorage.getItem('user_freq')===null){
     this.frequency_per_minute = Number(freq)
     stage()
 }
-
-
-// stage()
