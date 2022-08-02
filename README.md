@@ -2,3 +2,5 @@ Thank's to [this guy](https://drafterleo.github.io/schulte/), I dont need to wri
 Here I'm going to present  training apparatus one by one.
 Currently available are:
   -  iconic memory trainer
+  
+Site appears here: https://github.com/close2code-palm/desktop_trainer
