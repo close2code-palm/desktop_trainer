@@ -3,4 +3,4 @@ Here I'm going to present  training apparatus one by one.
 Currently available are:
   -  iconic memory trainer
   
-Site appears here: https://github.com/close2code-palm/desktop_trainer
+Site appears here: https://close2code-palm.github.io/desktop_trainer/
